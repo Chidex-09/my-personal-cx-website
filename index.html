@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style> .social-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.social-link {
+  color: #8a8a93;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.social-link:hover {
+  color: #ffffff; /* Lights up white when hovered */
+}
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
+  body { background-color: #0b0b0c; color: #f1f1f1; display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px 20px; }
+  
+  .slide {
+    width: 900px;
+    height: 506px; /* 16:9 Aspect Ratio */
+    background: #141416;
+    border: 1px solid #26262a;
+    border-radius: 8px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  }
+
+  .header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .name { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff; }
+  .title { font-size: 14px; font-weight: 500; color: #8a8a93; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+  .location { font-size: 12px; color: #63636e; text-align: right; line-height: 1.4; }
+
+  .bio { font-size: 14px; line-height: 1.6; color: #c4c4cc; max-width: 780px; margin-top: 20px; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+  .service-card { background: #1c1c20; border: 1px solid #2a2a30; border-radius: 6px; padding: 16px; }
+  .service-card h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; margin-bottom: 8px; }
+  .service-card ul { list-style: none; font-size: 11px; color: #9e9ea8; line-height: 1.6; }
+
+  .footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222226; padding-top: 16px; margin-top: auto; }
+  .pills { display: flex; gap: 8px; }
+  .pill { background: #222228; border: 1px solid #33333c; padding: 4px 10px; border-radius: 4px; font-size: 10px; color: #a1a1aa; }
+
+  /* Slide 2 Specifics */
+  .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+  .portfolio-item { background: #1a1a1e; border: 1px solid #282830; border-radius: 6px; overflow: hidden; }
+  .image-placeholder { height: 130px; background: #24242c; display: flex; align-items: center; justify-content: center; color: #52525e; font-size: 12px; font-weight: 600; letter-spacing: 1px; border-bottom: 1px solid #282830; }
+  .item-details { padding: 12px; }
+  .item-title { font-size: 13px; font-weight: 700; color: #ffffff; }
+  .item-sub { font-size: 11px; color: #8a8a93; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+  <!-- SLIDE 1: PROFILE -->
+  <div class="slide">
+    <div>
+      <div class="header">
+        <div>
+          <div class="name">CHIDIEBUBE OSANEBI</div>
+          <div class="title">Graphic Designer</div>
+        </div>
+        <div class="location">
+          BENIN CITY, NIGERIA<br>
+          <u>CONTACT</u><br> 
+          chidiosanebi3@gmail.com<br>
+          +2349071208710
+        </div>
+      </div>
+
+      <p class="bio">
+        Multidisciplinary graphic designer specializing in high impact brand identities, apparel graphics, and digital key art. I combine precise typography, structured layouts, and technical design mastery to deliver production ready visual systems for commercial clients, music artists, and fashion brands.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <h4>Brand Identity</h4>
+          <ul>
+            <li>• Logo Marks</li>
+            <li>• Style Guides</li>
+            <li>• Brand Assets</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h4>Key Art</h4>
+          <ul>
+            <li>• Cover Design</li>
+            <li>• Posters</li>
+            <li>• Album Artwork</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h4>Apparel</h4>
+          <ul>
+            <li>• Screen Prints</li>
+            <li>• Tech Packs</li>
+            <li>• Merch Systems</li>
+            <li>• Personalized Throw pillows & Mugs</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <h4>Digital</h4>
+          <ul>
+            <li>• Social Media Graphics</li>
+            <li>• Sales Flyer</li>
+            <li>• Event Flyers</li>
+            <li>• Logo Design</li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="pills">
+        <span class="pill">Affinity Designer</span>
+        <span class="pill">Photoshop</span>
+        <span class="pill">Pixellab</span>
+        <span class="pill">Picsart</span>
+        </span>
+      </div>
+      <span style="font-size: 11px; color: #52525e;">PAGE 01</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: PORTFOLIO SHOWCASE -->
+  <div class="slide">
+    <div>
+      <div class="header">
+        <div class="name" style="font-size: 20px;">SELECTED WORK</div>
+        <div class="location">2025–2026 ARCHIVE</div>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <!-- PUT YOUR IMAGE FILE NAME INSIDE THE QUOTES BELOW -->
+          <img src="shirt.jpg" style="width: 100%; height: 300px; object-fit: cover;" alt="Cover Art">
+          
+          <div class="item-details">
+            <div class="item-title">01 / BRAND IDENTITY & SYSTEMS</div>
+            <div class="item-sub">Custom typography, vector logo marks, & brand deck</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+  <div class="pills">
+    <span class="pill">Affinity Designer</span>
+    <span class="pill">Affinity Photo</span>
+    <span class="pill">Photoshop</span>
+    <span class="pill">DaVinci Resolve</span>
+  </div>
+
+  <!-- SOCIAL MEDIA HANDLES -->
+  <div class="social-links">
+    <a href="https://www.tiktok.com/@cxdesigns_?_r=1&_t=ZS-98qZ0o8zYFJ" target="_blank" class="social-link">TIKTOK: @cxdesigns_</a>
+    <a href="https://www.instagram.com/cxdesigns_?igsh=dGhrYzZocWNlcHp6&utm_source=qr" target="_blank" class="social-link">INSTAGRAM: @cxdesigns_</a>
+    <a href="https://wa.me/message/4AMO7GO6TQOAG1" target="_blank" class="social-link">WHATSAPP</a>
+  </div>
+
