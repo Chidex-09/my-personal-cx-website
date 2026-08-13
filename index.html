@@ -1,188 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style> .social-links {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  flex-wrap: wrap;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CX Designs</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
 
-.social-link {
-  color: #8a8a93;
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
+    body {
+      background-color: #033000;
+      color: #ff0000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 16px;
+    }
 
-.social-link:hover {
-  color: #ffffff; /* Lights up white when hovered */
-}
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
-  body { background-color: #033000; color: #ff0000; display: flex; flex-direction: column; align-items: center; gap: 20px; padding: 20px 16px; }
-  
-  .slide {
-    width: 100%;
-    max-width: 900px;
-    min-height: auto;
-    background: #161614;
-    border: 1px solid #f4f2ef;
-    border-radius: 8px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 20px 40px rgba(38, 232, 3, 0.5);
-  }
+    .social-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-  .header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
-  .name { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff; }
-  .title { font-size: 12px; font-weight: 500; color: #8a8a93; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
-  .location { font-size: 11px; color: #63636e; text-align: right; line-height: 1.4; }
+    .social-link {
+      color: #8a8a93;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
 
-  .bio { font-size: 13px; line-height: 1.6; color: #c4c4cc; margin-top: 16px; }
+    .social-link:hover {
+      color: #ffffff;
+    }
 
-  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 16px; }
-  .service-card { background: #1c1c20; border: 1px solid #2a2a30; border-radius: 6px; padding: 12px; }
-  .service-card h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; margin-bottom: 6px; }
-  .service-card ul { list-style: none; font-size: 10px; color: #9e9ea8; line-height: 1.5; }
+    .slide {
+      width: 100%;
+      max-width: 900px;
+      background: #161614;
+      border: 1px solid #f4f2ef;
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 40px rgba(38, 232, 3, 0.5);
+    }
 
-  .footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid #222226; padding-top: 12px; margin-top: auto; }
-  .pills { display: flex; gap: 6px; flex-wrap: wrap; }
-  .pill {
-    background: #111214;
-    border: 1px solid #2a2a30;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 9px;
-    color: #b7b7be;
-    white-space: nowrap;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.12s ease, box-shadow 0.2s ease;
-    cursor: default;
-  }
-  .pill:hover {
-    background: #1f4f31;
-    border-color: #39b66d;
-    color: #ebfff3;
-    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.06);
-    transform: translateY(1px);
-  }
-  .pill:active {
-    background: #0f8a42;
-    border-color: #50d582;
-    color: #f1fff6;
-    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.45);
-    transform: translateY(2px);
-  }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-  /* Modal Styles */
-  .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1000; align-items: center; justify-content: center; }
-  .modal.active { display: flex; }
-  .modal-content { max-width: 90vw; max-height: 90vh; position: relative; }
-  .modal-content img { width: 100%; height: 100%; object-fit: contain; }
-  .modal-close { position: absolute; top: 20px; right: 20px; background: #ffffff; color: #000000; border: none; font-size: 28px; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-  .modal-close:hover { background: #c4c4cc; }
+    .name {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
 
-  /* Slide 2 Specifics */
-  .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
-  .portfolio-item { background: #1a1a1e; border: 1px solid #282830; border-radius: 6px; overflow: hidden; }
-  .portfolio-image { display: block; width: 100%; height: 300px; object-fit: cover; cursor: pointer; }
-  .image-placeholder { height: 130px; background: #24242c; display: flex; align-items: center; justify-content: center; color: #52525e; font-size: 11px; font-weight: 600; letter-spacing: 1px; border-bottom: 1px solid #282830; }
-  .item-details { padding: 10px; }
-  .item-title { font-size: 12px; font-weight: 700; color: #ffffff; }
-  .item-sub { font-size: 10px; color: #8a8a93; margin-top: 2px; }
+    .title {
+      font-size: 12px;
+      font-weight: 500;
+      color: #8a8a93;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-  /* Tablet & Desktop Breakpoints */
-  @media (min-width: 640px) {
-    body { gap: 30px; padding: 30px 20px; }
-    .slide { padding: 32px; }
-    .name { font-size: 26px; }
-    .services-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
-    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-    .service-card { padding: 14px; }
-    .service-card h4 { font-size: 11px; margin-bottom: 7px; }
-  }
+    .location {
+      font-size: 11px;
+      color: #63636e;
+      text-align: right;
+      line-height: 1.4;
+    }
 
-  @media (min-width: 900px) {
-    body { gap: 40px; padding: 40px 20px; }
-    .slide { padding: 48px; max-width: 900px; }
-    .name { font-size: 28px; }
-    .title { font-size: 14px; }
-    .bio { font-size: 14px; max-width: 780px; }
-    .location { font-size: 12px; }
-    .services-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
-    .service-card { padding: 16px; }
-    .service-card h4 { font-size: 12px; margin-bottom: 8px; }
-    .service-card ul { font-size: 11px; line-height: 1.6; }
-    .image-placeholder { font-size: 12px; }
-    .item-title { font-size: 13px; }
-    .item-sub { font-size: 11px; }
-    .footer { padding-top: 16px; gap: 16px; }
-    .pills { gap: 8px; }
-    .pill { font-size: 10px; padding: 4px 10px; }
-  }
-</style>
+    .bio {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #c4c4cc;
+      margin-top: 16px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .service-card {
+      background: #1c1c20;
+      border: 1px solid #2a2a30;
+      border-radius: 6px;
+      padding: 12px;
+    }
+
+    .service-card h4 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .service-card ul {
+      list-style: none;
+      font-size: 10px;
+      color: #9e9ea8;
+      line-height: 1.5;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-top: 1px solid #222226;
+      padding-top: 12px;
+      margin-top: auto;
+    }
+
+    .pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      background: #111214;
+      border: 1px solid #2a2a30;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 9px;
+      color: #b7b7be;
+      white-space: nowrap;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.12s ease, box-shadow 0.2s ease;
+      cursor: default;
+    }
+
+    .pill:hover {
+      background: #1f4f31;
+      border-color: #39b66d;
+      color: #ebfff3;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.06);
+      transform: translateY(1px);
+    }
+
+    .pill:active {
+      background: #0f8a42;
+      border-color: #50d582;
+      color: #f1fff6;
+      box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.45);
+      transform: translateY(2px);
+    }
+
+    .portfolio-item {
+      background: #1a1a1e;
+      border: 1px solid #282830;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 16px;
+    }
+
+    .portfolio-image {
+      display: block;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    @media (min-width: 640px) {
+      body {
+        gap: 30px;
+        padding: 30px 20px;
+      }
+
+      .slide {
+        padding: 32px;
+      }
+
+      .name {
+        font-size: 26px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 20px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      body {
+        gap: 40px;
+        padding: 40px 20px;
+      }
+
+      .slide {
+        padding: 48px;
+        max-width: 900px;
+      }
+
+      .name {
+        font-size: 28px;
+      }
+
+      .title {
+        font-size: 14px;
+      }
+
+      .bio {
+        font-size: 14px;
+        max-width: 780px;
+      }
+
+      .location {
+        font-size: 12px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .service-card {
+        padding: 16px;
+      }
+
+      .service-card h4 {
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+
+      .service-card ul {
+        font-size: 11px;
+        line-height: 1.6;
+      }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- SLIDE 1: PROFILE -->
   <div class="slide">
-    <div>
-      <div class="header">
-        <div>
-          <div class="name">CX DESIGNS</div>
-          <div
- class="title">Graphic Design Service</div>
-        </div>
-        
-        </div>
+    <div class="header">
+      <div>
+        <div class="name">CX DESIGNS</div>
+        <div class="title">Graphic Design Service</div>
       </div>
+    </div>
 
-      <p class="bio">
-        CX Designs specializes in professional brand identities and custom printing solutions. We create logos, business cards, branded merchandise, and digital designs.
+    <p class="bio">
+      CX Designs specializes in professional brand identities and custom printing solutions. We create logos, business cards, branded merchandise, and digital designs.
+    </p>
 
-      </p>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <h4>Brand Identity</h4>
-          <ul>
-            <li>• Logo Marks</li>
-            <li>• Style Guides</li>
-            <li>• Brand Assets</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <h4>Key Art</h4>
-          <ul>
-            <li>• Cover Design</li>
-            <li>• Posters</li>
-            <li>• Album Artwork</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <h4>Apparel</h4>
-          <ul>
-            <li>• Screen Prints</li>
-            <li>• Tech Packs</li>
-            <li>• Merch Systems</li>
-            <li>• Personalized Throw pillows & Mugs</li>
-          </ul>
-        </div>
-        <div class="service-card">
-          <h4>Digital</h4>
-          <ul>
-            <li>• Social Media Graphics</li>
-            <li>• Sales Flyer</li>
-            <li>• Event Flyers</li>
-            <li>• Logo Design</li>
-
-          </ul>
-        </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <h4>Brand Identity</h4>
+        <ul>
+          <li>• Logo Marks</li>
+          <li>• Style Guides</li>
+          <li>• Brand Assets</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h4>Key Art</h4>
+        <ul>
+          <li>• Cover Design</li>
+          <li>• Posters</li>
+          <li>• Album Artwork</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h4>Apparel</h4>
+        <ul>
+          <li>• Screen Prints</li>
+          <li>• Tech Packs</li>
+          <li>• Merch Systems</li>
+          <li>• Personalized Throw pillows &amp; Mugs</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <h4>Digital</h4>
+        <ul>
+          <li>• Social Media Graphics</li>
+          <li>• Sales Flyer</li>
+          <li>• Event Flyers</li>
+          <li>• Logo Design</li>
+        </ul>
       </div>
     </div>
 
@@ -192,40 +310,38 @@
         <span class="pill">Affordable</span>
         <span class="pill">Fast</span>
         <span class="pill">Professional</span>
-        </span>
       </div>
+    </div>
   </div>
 
-  <!-- SLIDE 2: PORTFOLIO SHOWCASE -->
   <div class="slide">
-  
     <div class="name" style="font-size: 20px;">OUR SERVICES</div>
 
-        <div class="portfolio-item">
-          <!-- Additional image slot -->
-          <a href="Document.jpg" target="_blank">
-            <img src="Document.jpg" style="width: 100%; height: 300px; object-fit: cover; cursor: pointer;" alt="Project Image">
-          </a>
-      <div style="width: 100%; margin-bottom: 12px;">
-        <div style="font-size: 12px; font-weight: 700; color: #ffffff; margin-bottom: 10px;">CONTACT US</div>
-        <!-- SOCIAL MEDIA HANDLES -->
-        <div class="social-links">
-          <a href="https://www.tiktok.com/@cxdesigns_?_r=1&_t=ZS-98qZ0o8zYFJ" target="_blank" class="social-link"><img src="tiktok.png" alt="TikTok" style="height: 20px; width: auto;"></a>
-          <a href="https://www.instagram.com/cxdesigns_?igsh=dGhrYzZocWNlcHp6&utm_source=qr" target="_blank" class="social-link"><img src="ig.png" alt="Instagram" style="height: 20px; width: auto;"></a>
-          <a href="https://wa.me/message/4AMO7GO6TQOAG1" target="_blank" class="social-link"><img src="wp.png" alt="WhatsApp" style="height: 20px; width: auto;"></a>
-        </div>
+    <div class="portfolio-item">
+      <a href="Document.jpg" target="_blank" rel="noopener noreferrer">
+        <img src="Document.jpg" class="portfolio-image" alt="Project Image">
+      </a>
+    </div>
+
+    <div style="width: 100%; margin-top: 20px; margin-bottom: 12px;">
+      <div style="font-size: 12px; font-weight: 700; color: #ffffff; margin-bottom: 10px;">CONTACT US</div>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/@cxdesigns_?_r=1&_t=ZS-98qZ0o8zYFJ" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img src="tiktok.png" alt="TikTok" style="height: 20px; width: auto;">
+        </a>
+        <a href="https://www.instagram.com/cxdesigns_?igsh=dGhrYzZocWNlcHp6&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img src="ig.png" alt="Instagram" style="height: 20px; width: auto;">
+        </a>
+        <a href="https://wa.me/message/4AMO7GO6TQOAG1" target="_blank" rel="noopener noreferrer" class="social-link">
+          <img src="wp.png" alt="WhatsApp" style="height: 20px; width: auto;">
+        </a>
       </div>
+    </div>
 
-      <div class="header">
-        
-        <div class="location">2025–2026 CXDESIGNS</div>
-      </div>
-
-
-  </div> <!-- .footer -->
-  </div> <!-- .slide -->
-
-  
+    <div class="header">
+      <div class="location">2025–2026 CXDESIGNS</div>
+    </div>
+  </div>
 </body>
 </html>
 
