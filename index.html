@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CX Designs | Custom Branding & Merch</title>
+  <title>CX Designs | Graphic Design Services</title>
   <style>
     :root {
       --bg: #07130d;
@@ -213,24 +213,31 @@
 
     .showcase {
       position: relative;
-      padding: 18px;
-      border-radius: 28px;
+      padding: 12px;
+      border-radius: 22px;
       background: linear-gradient(180deg, rgba(18, 27, 24, 0.95), rgba(12,18,15,0.95));
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
+      width: min(100%, 360px);
+      margin-left: auto;
+      margin-right: 0;
+      justify-self: end;
     }
 
     .showcase-card {
       overflow: hidden;
-      border-radius: 24px;
+      border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.06);
       background: #0f1914;
     }
 
-    .showcase-card img {
+    .showcase-card img,
+    .showcase-card video {
       width: 100%;
-      height: 520px;
+      height: 300px;
+      display: block;
       object-fit: cover;
+      object-position: center;
     }
 
     .floating-tag {
@@ -511,6 +518,154 @@
       flex-wrap: wrap;
     }
 
+    .project-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 10, 8, 0.7);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      z-index: 100;
+    }
+
+    .project-modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .project-modal-panel {
+      width: min(480px, 100%);
+      background: linear-gradient(180deg, rgba(18, 26, 21, 0.98), rgba(10, 15, 12, 0.98));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .project-modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .project-modal-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .project-modal-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(46,211,122,0.18), rgba(240,199,117,0.12));
+      border: 1px solid rgba(46,211,122,0.2);
+      color: var(--green-2);
+      font-size: 1.1rem;
+    }
+
+    .project-modal-head h3 {
+      font-size: 1.5rem;
+      letter-spacing: -0.05em;
+    }
+
+    .project-close {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .project-modal p {
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .project-type-row {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .project-type-row label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .project-field,
+    .project-select {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      padding: 14px 16px;
+      font: inherit;
+    }
+
+    .project-select {
+      appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, var(--green-2) 50%), linear-gradient(135deg, var(--green-2) 50%, transparent 50%);
+      background-position: calc(100% - 18px) calc(50% - 2px), calc(100% - 12px) calc(50% - 2px);
+      background-size: 6px 6px, 6px 6px;
+      background-repeat: no-repeat;
+      padding-right: 38px;
+    }
+
+    .project-field {
+      min-height: 120px;
+      resize: vertical;
+      margin-bottom: 16px;
+    }
+
+    .project-field:focus,
+    .project-select:focus {
+      outline: 1px solid rgba(46,211,122,0.5);
+      border-color: rgba(46,211,122,0.38);
+    }
+
+    .project-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .project-cancel {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 12px 18px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .project-send {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: linear-gradient(135deg, var(--green), #26b86d);
+      color: #06140d;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
     @media (max-width: 980px) {
       .hero-wrap,
       .contact-wrap {
@@ -540,8 +695,9 @@
         grid-template-columns: 1fr;
       }
 
-      .showcase-card img {
-        height: 400px;
+      .showcase-card img,
+      .showcase-card video {
+        height: 280px;
       }
 
       .section-head {
@@ -556,7 +712,7 @@
     <div class="container">
       <nav class="nav" aria-label="Main navigation">
         <div class="brand">
-          <div class="brand-mark">C</div>
+          
           <span>CX Designs</span>
         </div>
 
@@ -567,7 +723,7 @@
           <a href="#contact">Contact</a>
         </div>
 
-        <a href="#contact" class="nav-btn">Book a design</a>
+        <a href="#contact" class="nav-btn">We Are Always Open</a>
       </nav>
     </div>
   </header>
@@ -583,29 +739,29 @@
           </p>
 
           <div class="cta-row">
-            <a href="#collection" class="primary-btn">Shop custom drops</a>
+            <a href="#collection" class="primary-btn">Our Services</a>
             <a href="#services" class="secondary-btn">Explore services</a>
           </div>
 
           <div class="stats">
             <div class="stat">
-              <strong>500+</strong>
+              <strong>100+</strong>
               <span>custom projects</span>
             </div>
             <div class="stat">
-              <strong>4.9/5</strong>
+              <strong>4/5</strong>
               <span>client rating</span>
             </div>
             <div class="stat">
-              <strong>48h</strong>
-              <span>turnaround</span>
+              <strong>12h</strong>
+              <span>Always Ready To Take Your Order</span>
             </div>
           </div>
         </div>
 
         <div class="showcase">
           <div class="showcase-card">
-            <img src="Document.jpg" alt="CX Designs brand mockup" />
+            <video src="ai video.mp4" autoplay muted loop playsinline aria-label="CX Designs brand mockup"></video>
           </div>
           <div class="floating-tag">
             <div class="mini">Featured</div>
@@ -619,7 +775,7 @@
     <section id="collection" class="section">
       <div class="section-head">
         <h2>Featured collection</h2>
-        <p>From premium apparel to branded essentials, each design is built to elevate your identity and leave a lasting impression.</p>
+        <p>Fast,Affordable,Reliable and Professional. each design is built to elevate your identity and leave a lasting impression.</p>
       </div>
 
       <div class="products">
@@ -628,7 +784,7 @@
           <div class="product-body">
             <div class="badge-row">
               <span class="tag">Merch</span>
-              <span class="price">$35</span>
+              <span class="price">#0000</span>
             </div>
             <h3>Signature Tee</h3>
             <p>Clean, bold, premium fabric for personal brands and events.</p>
@@ -641,7 +797,7 @@
           <div class="product-body">
             <div class="badge-row">
               <span class="tag">Apparel</span>
-              <span class="price">$42</span>
+              <span class="price">#0000</span>
             </div>
             <h3>Drop Collection</h3>
             <p>Limited-edition streetwear aesthetics for creative businesses.</p>
@@ -654,7 +810,7 @@
           <div class="product-body">
             <div class="badge-row">
               <span class="tag">Branding</span>
-              <span class="price">$120</span>
+              <span class="price">#0000</span>
             </div>
             <h3>Creative Brand Pack</h3>
             <p>Identity sets created for businesses, creators, and startups.</p>
@@ -667,7 +823,7 @@
           <div class="product-body">
             <div class="badge-row">
               <span class="tag">Design</span>
-              <span class="price">From $80</span>
+              <span class="price">#0000</span>
             </div>
             <h3>Print & Promo</h3>
             <p>Flyers, covers, packaging, and special print-ready visuals.</p>
@@ -715,7 +871,7 @@
         <h3>Need a design that looks premium and feels unforgettable?</h3>
         <p>Let’s build your next branding or merchandise drop.</p>
       </div>
-      <a href="#contact" class="primary-btn">Start your project</a>
+      <button type="button" class="primary-btn project-trigger">Start your project</button>
     </section>
 
     <section id="contact" class="section contact-wrap">
@@ -741,8 +897,8 @@
         <div>
           <div class="mini-label">Studio details</div>
           <div class="meta">
-            <div><strong>Location:</strong> Worldwide</div>
-            <div><strong>Focus:</strong> Branding, merch, digital design</div>
+            <div><strong>Location:</strong>Benin City,Edo State</div>
+            <div><strong>Focus:</strong> Graphic Designs, And Branding</div>
             <div><strong>Style:</strong> Premium, modern, conversion-ready</div>
           </div>
         </div>
@@ -754,10 +910,112 @@
 
   <footer>
     <div class="container footer-row">
-      <span>© 2025–2026 CX Designs</span>
-      <span>Custom branding • Print • Merch • Digital design</span>
+      <span>© 2025 CX Designs</span>
+      <span>Creative direction • Branding • Merch • Print</span>
     </div>
   </footer>
+
+  <div class="project-modal" id="projectModal" aria-hidden="true">
+    <div class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+      <div class="project-modal-head">
+        <div class="project-modal-title-wrap">
+          <div class="project-modal-icon">✦</div>
+          <h3 id="projectModalTitle">Start your project</h3>
+        </div>
+        <button type="button" class="project-close" aria-label="Close">×</button>
+      </div>
+      <p>Tell us a little about what you want, and we’ll reach out on WhatsApp with the next step.</p>
+
+      <form id="projectForm">
+        <div class="project-type-row">
+          <label for="projectType">Project type</label>
+          <select id="projectType" class="project-select">
+            <option value="Brand identity">Brand identity</option>
+            <option value="Custom merch / apparel">Custom merch / apparel</option>
+            <option value="Social media graphics">Social media graphics</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <textarea
+          class="project-field"
+          id="projectBrief"
+          placeholder="Example: I need a premium logo, a t-shirt design, and a social media banner for my brand."
+          aria-label="Project details"
+        ></textarea>
+
+        <div class="project-actions">
+          <button type="button" class="project-cancel">Cancel</button>
+          <button type="submit" class="project-send">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const projectModal = document.getElementById('projectModal');
+    const projectTrigger = document.querySelector('.project-trigger');
+    const projectClose = document.querySelector('.project-close');
+    const projectCancel = document.querySelector('.project-cancel');
+    const projectForm = document.getElementById('projectForm');
+    const projectBrief = document.getElementById('projectBrief');
+    const projectType = document.getElementById('projectType');
+    const whatsappBase = 'https://wa.me/message/4AMO7GO6TQOAG1';
+
+    function openProjectModal() {
+      projectModal.classList.add('open');
+      projectModal.setAttribute('aria-hidden', 'false');
+      setTimeout(function () {
+        projectBrief.focus();
+      }, 50);
+    }
+
+    function closeProjectModal() {
+      projectModal.classList.remove('open');
+      projectModal.setAttribute('aria-hidden', 'true');
+    }
+
+    if (projectTrigger) {
+      projectTrigger.addEventListener('click', openProjectModal);
+    }
+
+    if (projectClose) {
+      projectClose.addEventListener('click', closeProjectModal);
+    }
+
+    if (projectCancel) {
+      projectCancel.addEventListener('click', closeProjectModal);
+    }
+
+    projectModal.addEventListener('click', function (event) {
+      if (event.target === projectModal) {
+        closeProjectModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && projectModal.classList.contains('open')) {
+        closeProjectModal();
+      }
+    });
+
+    projectForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const selectedType = projectType.value || 'General project';
+      const brief = projectBrief.value.trim() || 'Hi CX Designs, I want to start a project.';
+      const message = 'Hello CX Designs, I want to start a project.\n\nProject type: ' + selectedType + '\n\n' + brief;
+      const whatsappUrl = whatsappBase + '?text=' + encodeURIComponent(message);
+      const newTab = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
+      if (!newTab) {
+        window.location.href = whatsappUrl;
+      }
+
+      projectBrief.value = '';
+      closeProjectModal();
+    });
+  </script>
 </body>
 </html>
 
